@@ -93,25 +93,32 @@ def cylon(step,stepRange,length,color):
 #except:
 #    off()
 
-    
-
 try:
     while True:
-        for col in LEDcolors:
-            setAll(LEDcolors[col])
+        for step in range(0,stepRange):
+            cylon(step,stepRange,10,LEDcolors['red'])
             show()
-            time.sleep(.2)
-            off()
-            time.sleep(.1)
-            
-        for col in Wheelcolors:
-            setAll(Wheel(Wheelcolors[col]))
-            show()
-            time.sleep(.2)
-            off()
-            time.sleep(.1)            
+            time.sleep(.005)
 except:
     off()
-    
+
+#try:
+#    while True:
+#        for col in LEDcolors:
+#            setAll(LEDcolors[col])
+#            show()
+#            time.sleep(.2)
+#            off()
+#            time.sleep(.1)
+#            
+#        for col in Wheelcolors:
+#            setAll(Wheel(Wheelcolors[col]))
+#            show()
+#            time.sleep(.2)
+#            off()
+#            time.sleep(.1)            
+#except:
+#    off()
+#    
     
 
