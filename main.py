@@ -68,8 +68,8 @@ def cylon(step,stepRange,length,color):
             strip.setPixelColor(pix,color)          
         strip.setPixelColor(head-length,0)          #turn off the end
     if step > stepRange // 2:                       #let the second half go backward
-        head = numpixels - step * fraction
-        for pix in range(head,head+length):         #turn 9on the pixels
+        head = numpixels - (step * fraction)%(stepRange//2)
+        for pix in range(head,head+length):         #turn on the pixels
             strip.setPixelColor(pix,color)
         strip.setPixelColor(head+length,0)          #turn off the end
             
