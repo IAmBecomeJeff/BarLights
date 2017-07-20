@@ -61,15 +61,17 @@ def moving_dots(interval,color,j):
         strip.setPixelColor(dot+move,color)        
 
 def cylon(step,stepRange,length,color):
-    fraction = (numpixels + length) // (stepRange/2)
-    if step <= stepRange // 2:      
-        head = step * fraction
-        for pix in range(head-length,head+1):
-            strip.setPixelColor(pix,color)
-    if step > stepRange // 2:
+    fraction = (numpixels + length) // (stepRange/2) # set a fraction to scale the lights
+    if step <= stepRange // 2:      #let the first half go forward
+        head = step * fraction      #scale the starting pixel
+        for pix in range(head-length,head+1):       #turn on the range of lights
+            strip.setPixelColor(pix,color)          
+        strip.setPixelColor(head-length,0)          #turn off the end
+    if step > stepRange // 2:                       #let the second half go backward
         head = numpixels - step * fraction
-        for pix in range(head,head+length):
+        for pix in range(head,head+length):         #turn 9on the pixels
             strip.setPixelColor(pix,color)
+        strip.setPixelColor(head+length,0)          #turn off the end
             
 #def brightAndDim(step,stepRange):
 #    totRange = stepRange*10
