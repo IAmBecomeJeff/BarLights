@@ -98,7 +98,8 @@ def cylon(step,stepRange,length,color):
 try:
     while True:
         for step in range(0,stepRange):
-            cylon(step,stepRange,10,LEDcolors['red'])
+            rainbow_split(step)
+            moving_dots(12,LEDcolors['red'],step)
             show()
             time.sleep(.005)
 except:
