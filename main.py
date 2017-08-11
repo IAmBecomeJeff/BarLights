@@ -69,9 +69,9 @@ def cylon(step,stepRange,length,color):
         strip.setPixelColor(head-length,0)          #turn off the end
     if step > stepRange // 2:                       #let the second half go backward
         head = numpixels - (step * fraction)%(stepRange//2)
-        for pix in range(head,head+length):         #turn on the pixels
+        for pix in range(head-length,head):         #turn on the pixels
             strip.setPixelColor(pix,color)
-        strip.setPixelColor(head+length,0)          #turn off the end
+        strip.setPixelColor(head,0)          #turn off the end
             
 #def brightAndDim(step,stepRange):
 #    totRange = stepRange*10
