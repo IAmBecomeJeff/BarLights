@@ -2,6 +2,7 @@
 
 import time
 from dotstar import Adafruit_DotStar
+import random
 
 numpixels = 144 # Number of LEDs in strip
 stepRange = 256 # length of program iteration
@@ -58,7 +59,11 @@ def regular_dots(interval,color):
 def moving_dots(interval,color,j):
     move = j%interval
     for dot in range(0,numpixels,interval):
-        strip.setPixelColor(dot+move,color)        
+        strip.setPixelColor(dot+move,color)
+
+def bottle(position,color,width=3):
+    for pix in range(position-width//2,position+width//2+1):
+        strip.setPixelColor(pix,color)
 
 def cylon(step,stepRange,length,color):
     fraction = (numpixels + length) // (stepRange/2) # set a fraction to scale the lights
@@ -97,11 +102,14 @@ def cylon(step,stepRange,length,color):
 
 try:
     while True:
-        for step in range(0,stepRange):
-            rainbow_split(step)
-            moving_dots(12,LEDcolors['red'],step)
+        for step in range(0,255):#stepRange):
+            rainbow(step)
+            bottle(30,Wheel(Wheelcolors['teal']))
+            bottle(45,Wheel(Wheelcolors['lime']),4)
+            bottle(70,Wheel(Wheelcolors['red']),7)
+            bottle(36,Wheel(Wheelcolors['teal']))
             show()
-            time.sleep(.005)
+            time.sleep(.0075)
 except:
     off()
 
